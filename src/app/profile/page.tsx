@@ -17,10 +17,6 @@ const ProfilePage = () => {
   const userId = user?.id as string;
   console.log("Frontend (useQuery): userId value:", userId);
 
-  // console.log("User ID:", userId);
-  const fullName = user?.firstName
-    ? `${user.firstName} ${user.lastName || ""}`.trim()
-    : "";
 
   const allPlan = useQuery(api.plans.getUserPlans, { userId });
 
