@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  SignInButton,
-  SignUpButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import {
   DumbbellIcon,
   HomeIcon,
@@ -49,10 +44,7 @@ const Navbar = () => {
           <UserIcon className="size-4" />
           <span>Profile</span>
         </Link>
-        <Link
-          href="/generate-program"
-          onClick={() => setIsMenuOpen(false)}
-        >
+        <Link href="/generate-program" onClick={() => setIsMenuOpen(false)}>
           <Button
             variant="outline"
             className="w-full border-primary/50 text-primary hover:text-white hover:bg-primary/10"
@@ -136,13 +128,34 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? (
-              <XIcon className="size-6 text-primary" />
-            ) : (
-              <MenuIcon className="size-6 text-primary" />
-            )}
-          </button>
+          {isSignedIn ? (
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? (
+                <XIcon className="size-6 text-primary" />
+              ) : (
+                <MenuIcon className="size-6 text-primary" />
+              )}
+            </button>
+          ) : (
+            <div className="flex gap-2">
+              <SignInButton>
+                <Button
+                  variant="outline"
+                  className="border-primary/50 text-primary hover:text-white hover:bg-primary/10 text-xs px-3"
+                >
+                  Sign In
+                </Button>
+              </SignInButton>
+              <SignUpButton>
+                <Button
+                  variant="outline"
+                  className="border-primary/50 text-primary hover:text-white hover:bg-primary/10 text-xs px-3"
+                >
+                  Sign Up
+                </Button>
+              </SignUpButton>
+            </div>
+          )}
         </div>
       </div>
 
