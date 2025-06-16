@@ -34,39 +34,41 @@ const ProfilePage = () => {
       <ProfileHeader user={user} />
 
       {allPlan && allPlan.length > 0 ? (
-        <div className="space-y-8">
-          {/* Plan Selection */}
-          <div className="relative backdrop-blur-sm border border-border p-6">
-            <CornerElements />
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold tracking-tight">
-                <span className="text-primary">Your</span>{" "}
-                <span className="text-foreground">Fitness Plans</span>
-              </h2>
-              <div className="font-mono text-xs text-muted-foreground">
-                TOTAL: {allPlan.length}
-              </div>
-            </div>
+  <div className="space-y-8">
+    {/* Plan Selection */}
+    <div className="relative backdrop-blur-sm border border-border p-4 sm:p-6">
+      <CornerElements />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+        <h2 className="text-lg sm:text-xl font-bold tracking-tight">
+          <span className="text-primary">Your</span>{" "}
+          <span className="text-foreground">Fitness Plans</span>
+        </h2>
+        <div className="font-mono text-xs text-muted-foreground self-end sm:self-auto">
+          TOTAL: {allPlan.length}
+        </div>
+      </div>
 
-            <div className="flex flex-wrap gap-2">
-              {allPlan.map((plan) => (
-                <Button
-                  key={plan._id}
-                  onClick={() => setSelectedPlan(plan._id)}
-                  className={`text-foreground border hover:text-white ${
-                    selectedPlan === plan._id
-                      ? "bg-primary/20 text-primary border-primary"
-                      : "bg-transparent border-border hover:border-primary/50"
-                  }`}
-                >
-                  {plan.name}
-                  {plan.isActive && (
-                    <span className="ml-2 bg-green-500/20 text-green-500 text-xs px-2 py-0.5 rounded">
-                      ACTIVE
-                    </span>
-                  )}
-                </Button>
-              ))}
+      <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 -mx-1 px-1">
+        {allPlan.map((plan) => (
+          <Button
+            key={plan._id}
+            onClick={() => setSelectedPlan(plan._id)}
+            className={`text-foreground border hover:text-white min-w-fit ${
+              selectedPlan === plan._id
+                ? "bg-primary/20 text-primary border-primary"
+                : "bg-transparent border-border hover:border-primary/50"
+            }`}
+          >
+            <span className="truncate max-w-[120px] sm:max-w-none">
+              {plan.name}
+            </span>
+            {plan.isActive && (
+              <span className="ml-2 bg-green-500/20 text-green-500 text-xs px-2 py-0.5 rounded whitespace-nowrap">
+                ACTIVE
+              </span>
+            )}
+          </Button>
+        ))}
             </div>
           </div>
 

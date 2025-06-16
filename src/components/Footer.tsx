@@ -67,7 +67,7 @@ const Footer = () => {
           
         </div>
         {/* Footer with Dynamic Technology Logos */}
-        <div className="flex items-center justify-center gap-4 px-3 py-2 mt-4 border-t border-border text-xs font-mono text-muted-foreground">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mt-4 px-3 py-2 border-t border-border text-xs font-mono text-muted-foreground">
   <span className="mr-2">Built with:</span>
   <div className="flex items-center gap-2">
     <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity duration-200">

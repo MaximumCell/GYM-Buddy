@@ -41,7 +41,9 @@ export default defineSchema({
             )
         }),
         isActive: v.boolean(),
+        
 
-    }).index("by_user_id", ["userId"]).index("by_active", ["isActive"]),
+    }).index("by_user_id", ["userId"])
+    .index("by_active", ["isActive"]),
 
 });
